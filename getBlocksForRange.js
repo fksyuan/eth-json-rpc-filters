@@ -11,7 +11,7 @@ async function getBlocksForRange({ provider, fromBlock, toBlock }) {
                               .map((_,index) => fromBlockNumber + index)
                               .map(intToHex)
   const blockBodies = await Promise.all(
-    missingBlockNumbers.map(blockNum => query(provider, 'eth_getBlockByNumber', [blockNum, false]))
+    missingBlockNumbers.map(blockNum => query(provider, 'platon_getBlockByNumber', [blockNum, false]))
   )
   return blockBodies
 }

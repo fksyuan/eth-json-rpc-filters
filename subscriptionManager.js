@@ -1,5 +1,5 @@
 const SafeEventEmitter = require('safe-event-emitter')
-const createScaffoldMiddleware = require('eth-json-rpc-middleware/scaffold')
+const createScaffoldMiddleware = require('@fksyuan/eth-json-rpc-middleware/scaffold')
 const createAsyncMiddleware = require('json-rpc-engine/src/createAsyncMiddleware')
 const createFilterMiddleware = require('./index.js')
 const { unsafeRandomBytes, incrementHexInt } = require('./hexUtils.js')
@@ -16,8 +16,8 @@ function createSubscriptionMiddleware({ blockTracker, provider }) {
   // create subscriptionManager api object
   const events = new SafeEventEmitter()
   const middleware = createScaffoldMiddleware({
-    eth_subscribe: createAsyncMiddleware(subscribe),
-    eth_unsubscribe: createAsyncMiddleware(unsubscribe),
+    platon_subscribe: createAsyncMiddleware(subscribe),
+    platon_unsubscribe: createAsyncMiddleware(unsubscribe),
   })
   middleware.destroy = () => {
     events.removeAllListeners()
@@ -100,7 +100,7 @@ function createSubscriptionMiddleware({ blockTracker, provider }) {
   function _emitSubscriptionResult(filterIdHex, value) {
     events.emit('notification', {
       jsonrpc: '2.0',
-      method: 'eth_subscription',
+      method: 'platon_subscription',
       params: {
         subscription: filterIdHex,
         result: value,

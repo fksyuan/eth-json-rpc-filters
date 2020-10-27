@@ -1,6 +1,6 @@
 const Mutex = require('await-semaphore').Mutex
 const createAsyncMiddleware = require('json-rpc-engine/src/createAsyncMiddleware')
-const createJsonRpcMiddleware = require('eth-json-rpc-middleware/scaffold')
+const createJsonRpcMiddleware = require('@fksyuan/eth-json-rpc-middleware/scaffold')
 const LogFilter = require('./log-filter.js')
 const BlockFilter = require('./block-filter.js')
 const TxFilter = require('./tx-filter.js')
@@ -19,14 +19,14 @@ function createEthFilterMiddleware({ blockTracker, provider }) {
 
   const middleware = createJsonRpcMiddleware({
     // install filters
-    eth_newFilter:                   waitForFree(toFilterCreationMiddleware(newLogFilter)),
-    eth_newBlockFilter:              waitForFree(toFilterCreationMiddleware(newBlockFilter)),
-    eth_newPendingTransactionFilter: waitForFree(toFilterCreationMiddleware(newPendingTransactionFilter)),
+    platon_newFilter:                   waitForFree(toFilterCreationMiddleware(newLogFilter)),
+    platon_newBlockFilter:              waitForFree(toFilterCreationMiddleware(newBlockFilter)),
+    platon_newPendingTransactionFilter: waitForFree(toFilterCreationMiddleware(newPendingTransactionFilter)),
     // uninstall filters
-    eth_uninstallFilter:             waitForFree(toAsyncRpcMiddleware(uninstallFilterHandler)),
+    platon_uninstallFilter:             waitForFree(toAsyncRpcMiddleware(uninstallFilterHandler)),
     // checking filter changes
-    eth_getFilterChanges:            waitForFree(toAsyncRpcMiddleware(getFilterChanges)),
-    eth_getFilterLogs:               waitForFree(toAsyncRpcMiddleware(getFilterLogs)),
+    platon_getFilterChanges:            waitForFree(toAsyncRpcMiddleware(getFilterChanges)),
+    platon_getFilterLogs:               waitForFree(toAsyncRpcMiddleware(getFilterLogs)),
   })
 
   // setup filter updating and destroy handler
