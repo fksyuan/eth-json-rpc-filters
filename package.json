@@ -1,7 +1,7 @@
 {
   "name": "@fksyuan/eth-json-rpc-filters",
   "version": "4.1.1",
-  "description": "[json-rpc-engine](https://github.com/kumavis/json-rpc-engine) middleware implementing ethereum filter methods. Backed by an [eth-block-tracker](https://github.com/MetaMask/eth-block-tracker) and web3 provider interface (`web3.currentProvider`).",
+  "description": "[json-rpc-engine](https://github.com/kumavis/json-rpc-engine) middleware implementing platon filter methods. Backed by an [eth-block-tracker](https://github.com/fksyuan/eth-block-tracker) and web3 provider interface (`web3.currentProvider`).",
   "main": "index.js",
   "scripts": {
     "test": "node test"
@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "await-semaphore": "^0.1.3",
-    "@fksyuan/eth-json-rpc-middleware": "^4.1.4",
+    "@fksyuan/eth-json-rpc-middleware": "^5.0.2",
     "@fksyuan/eth-query": "^2.1.2",
     "json-rpc-engine": "^5.1.3",
     "lodash.flatmap": "^4.5.0",
